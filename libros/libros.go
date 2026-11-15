@@ -49,3 +49,8 @@ func ObtenerLibros() []Libro {
     copy(copia, listaLibros)
     return copia
 }
+
+ // ContarLibros devuelve la cantidad de libros registrados.
+func ContarLibros() int {
+    return len(listaLibros)
+}

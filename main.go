@@ -1,15 +1,23 @@
 
 package main
 
+
+
 import (
     "bufio"
     "fmt"
     "os"
     "strings"
 
+    "github.com/aralfaomega121-lab/BookManager/administracion"
     "github.com/aralfaomega121-lab/BookManager/catalogo"
+    "github.com/aralfaomega121-lab/BookManager/lectura"
     "github.com/aralfaomega121-lab/BookManager/libros"
+    "github.com/aralfaomega121-lab/BookManager/usuarios"
 )
+
+
+
 
 func main() {
     lector := bufio.NewScanner(os.Stdin)
@@ -32,8 +40,42 @@ func main() {
         opcion := strings.TrimSpace(lector.Text())
 
         switch opcion {
-        case "1":
-            fmt.Println("Modulo de usuarios pendiente.")
+        
+case "1":
+    fmt.Println("\n--- GESTION DE USUARIOS ---")
+    fmt.Println("1. Registrar usuario")
+    fmt.Println("2. Mostrar usuarios")
+    fmt.Print("Seleccione una opcion: ")
+
+    if !lector.Scan() {
+        return
+    }
+
+    subopcion := strings.TrimSpace(lector.Text())
+
+    switch subopcion {
+    case "1":
+        fmt.Print("Ingrese el nombre: ")
+        if !lector.Scan() {
+            return
+        }
+        nombre := strings.TrimSpace(lector.Text())
+
+        fmt.Print("Ingrese el correo: ")
+        if !lector.Scan() {
+            return
+        }
+        correo := strings.TrimSpace(lector.Text())
+
+        usuarios.RegistrarUsuario(nombre, correo)
+
+    case "2":
+        usuarios.MostrarUsuarios()
+
+    default:
+        fmt.Println("Opcion no valida.")
+    }
+
 
         case "2":
             fmt.Println("\n--- GESTION DE LIBROS ---")
@@ -100,11 +142,32 @@ case "3":
     }
 
 
-        case "4":
-            fmt.Println("Modulo de lectura pendiente.")
+        
+case "4":
+    fmt.Println("\n--- LECTURA Y DESCARGA ---")
+    fmt.Println("1. Leer libro de ejemplo")
+    fmt.Println("2. Descargar libro de ejemplo")
+    fmt.Print("Seleccione una opcion: ")
+
+    if !lector.Scan() {
+        return
+    }
+
+    subopcion := strings.TrimSpace(lector.Text())
+
+    switch subopcion {
+    case "1":
+        lectura.LeerEjemplo()
+
+    case "2":
+        lectura.DescargarEjemplo()
+
+    default:
+        fmt.Println("Opcion no valida.")
+    }
 
         case "5":
-            fmt.Println("Modulo de administracion pendiente.")
+    administracion.MostrarEstadisticas()
 
         case "0":
             fmt.Println("Gracias por utilizar BookManager.")

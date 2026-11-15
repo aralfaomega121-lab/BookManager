@@ -1,0 +1,9 @@
+MI PRIMERA BIBLIOTECA DIGITAL
+
+Este es un libro digital de ejemplo para BookManager.
+
+Una biblioteca digital permite organizar libros y facilitar su consulta.
+
+Con este sistema podemos registrar libros, buscar titulos y consultar informacion.
+
+Este texto fue creado como ejemplo para el proyecto academico.
